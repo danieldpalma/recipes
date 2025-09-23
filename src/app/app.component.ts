@@ -1,18 +1,13 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './shared/ui/header/header.component';
-import { RecipeService } from './recipe/data/recipe.service';
-import { RecipesComponent } from './recipe/feature/recipes/recipes.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
 	selector: 'app-root',
-	imports: [HeaderComponent, RecipesComponent],
+	imports: [HeaderComponent, RouterOutlet],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.css',
 })
 export class AppComponent {
-	title = 'recipes';
-
-	constructor(private service: RecipeService) {
-		this.service.get().subscribe((data) => console.log(data));
-	}
+	title = 'My Recipe Book';
 }

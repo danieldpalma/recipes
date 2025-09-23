@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { RecipeGridComponent } from '../../ui/recipe-grid/recipe-grid.component';
 import { RecipeService } from '../../data/recipe.service';
 import { CategoryService } from '../../data/category.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-recipes',
@@ -13,7 +14,12 @@ import { CategoryService } from '../../data/category.service';
 export class RecipesComponent {
 	recipeService = inject(RecipeService);
 	categoryService = inject(CategoryService);
+	router = inject(Router);
 
 	recipes$ = this.recipeService.get();
 	categories$ = this.categoryService.get();
+
+	goToRecipe(id: string) {
+		this.router.navigate(['/receitas', id]);
+	}
 }

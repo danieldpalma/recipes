@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+	ChangeDetectionStrategy,
+	Component,
+	input,
+	output,
+} from '@angular/core';
 import { Recipe } from '../../data/recipe.model';
 import { Category } from '../../data/category.model';
 import { CategoryNamePipe } from '../../util/category-name.pipe';
@@ -14,4 +19,5 @@ import { NewRecipeBadgeDirective } from '../../util/new-recipe-badge.directive';
 export class RecipeCardComponent {
 	recipe = input<Recipe>();
 	categories = input<Category[]>();
+	clickEvent = output<string>();
 }
