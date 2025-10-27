@@ -3,9 +3,10 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Lara from '@primeng/themes/lara';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { routes } from './app.routes';
+import { authInterceptor } from './auth/data/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -20,6 +21,6 @@ export const appConfig: ApplicationConfig = {
 				},
 			},
 		}),
-		provideHttpClient(),
+		provideHttpClient(withInterceptors([authInterceptor])),
 	],
 };
