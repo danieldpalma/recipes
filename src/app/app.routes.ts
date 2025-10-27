@@ -11,5 +11,12 @@ export const routes: Routes = [
 				(c) => c.RecipeComponent
 			),
 	},
+	{
+		path: 'login',
+		loadComponent: () =>
+			import('./auth/feature/login/login.component').then(
+				(c) => c.LoginComponent
+			),
+	},
 	{ path: '**', redirectTo: 'home' },
 ];
