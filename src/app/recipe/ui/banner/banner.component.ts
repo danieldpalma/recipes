@@ -33,7 +33,7 @@ export class BannerComponent {
 	recipes = model<Recipe[] | null>();
 	goToRecipeEvent = output<string>();
 
-	@HostListener('document:click', ['event'])
+	@HostListener('document:click', ['$event'])
 	clickOut(event: MouseEvent) {
 		if (!this.elementRef.nativeElement.contains(event.target)) {
 			this.recipes.set(null);
