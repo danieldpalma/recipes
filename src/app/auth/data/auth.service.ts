@@ -13,7 +13,7 @@ export class AuthService {
 
 	public login(username: string, password: string): Observable<Session[]> {
 		return this.httpClient
-			.get<Session[]>(`${this.apiBaseUrl}/api/v1/login`)
+			.get<Session[]>(`/api/v1/login`)
 			.pipe(tap((session) => localStorage.setItem('token', session[0].token)));
 	}
 
