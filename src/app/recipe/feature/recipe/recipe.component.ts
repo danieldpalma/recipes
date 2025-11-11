@@ -43,7 +43,12 @@ export class RecipeComponent implements OnInit {
 
 	ngOnInit(): void {
 		const id = this.id();
-		if (id) this.recipe$ = this.recipeService.getById(id);
+		this.recipe$ = this.recipeService.getById(id ?? '');
+		this.comments$ = this.commentService.comments$;
+		this.commentService
+			.get(id ?? '')
+			.pipe(first())
+			.subscribe();
 	}
 
 	addComment(form: FormGroup) {
@@ -53,6 +58,7 @@ export class RecipeComponent implements OnInit {
 		}
 
 		const comment = {
+			id: '',
 			createdAt: new Date(),
 			recipeId: this.id(),
 			userId: '123456',
